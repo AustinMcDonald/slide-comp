@@ -1,0 +1,94 @@
+import numpy as np
+import glob
+
+
+from PIL import Image 
+# Nedded for background fit
+#import numpy.polynomial.polynomial as poly
+#from scipy.optimize import curve_fit
+#from scipy.signal import savgol_filter
+#from scipy import optimize
+
+# needed for spotfinder
+#import scipy.ndimage as ndimage
+#import scipy.ndimage.filters as filters
+
+# custom functions
+from DefDefDefinitions import PE_Vals
+from DefDefDefinitions import Image_Converter
+from DefDefDefinitions import FrequencyFilterFunction
+from DefDefDefinitions import FFT_Filter
+from DefDefDefinitions import Unique_Circle
+from DefDefDefinitions import Fit_2D_Gaussian
+from DefDefDefinitions import gaussian_2d
+from DefDefDefinitions import moving_average
+
+from C_DefDef import *
+
+from time import time
+
+t1 = time()
+
+DIR = [
+ '/Users/austinmcdonald/Desktop/110619/Calabration/spiked-00/'
+, '/Users/austinmcdonald/Desktop/110619/Calabration/spiked-01/'
+, '/Users/austinmcdonald/Desktop/110619/Calabration/spiked-02/'   
+]
+
+DIR = ['/Users/austinmcdonald/Desktop/slide-calabration/data/spiked-00/']
+
+NAME = 'hist-spiked.npy'
+datamin  = 0
+datamax  = 320
+numbins  = 320
+bins     = np.linspace(datamin, datamax, numbins)
+HIST     = np.zeros(numbins-1, dtype='int32')
+
+for x in range(0,len(DIR)):
+    
+    Dir  = DIR[x]
+    end = 300
+    DataFiles = glob.glob(Dir+'*')
+    DataFiles.sort()
+    DataFiles = DataFiles[0:end]
+
+    Row    = int(250)
+    Col    = Row
+    Yindex = int(256)
+    Xindex = int(256)
+
+    eOffset, eCoeff = PE_Vals(DataFiles[0])
+    Test = Image_Converter(DataFiles[0], eOffset, eCoeff, Xindex, Yindex, Row, Col)
+    Shape = Test.shape[0]
+    r = 130
+    Xoff = 250
+    Yoff = 320
+    X_circle, Y_circle = Unique_Circle(r, Xoff, Yoff)
+    keep = np.where(Y_circle<Shape)
+    Y_circle = Y_circle[keep]
+    X_circle = X_circle[keep]
+    keep = np.where(X_circle<Shape)
+    Y_circle = Y_circle[keep]
+    X_circle = X_circle[keep]
+  
+    FreqCut=0.03
+    FreqCutWidth=0.04
+    FilterArray = FrequencyFilterFunction(Shape,FreqCut,FreqCutWidth)
+
+
+    for img in DataFiles:
+        HIST_VAL = []
+        eOffset, eCoeff = PE_Vals(img)
+        ReducedImage = Image_Converter(img, eOffset, eCoeff, Xindex, Yindex, Row, Col)
+        ReducedImage = FFT_Filter(ReducedImage, FilterArray)
+        r_vals = ReducedImage[X_circle,Y_circle]
+
+        r_cut  = ((X_circle-Xoff)**2+(Y_circle-Yoff)**2).max()
+        HIST_VAL = Hist_maker(r_cut, Yoff, Xoff, ReducedImage.shape[0], ReducedImage)
+        htemp, jnk = np.histogram(HIST_VAL, bins)
+        HIST += htemp
+
+np.save(NAME,HIST)
+
+t2 = time()
+print(t2-t1)
