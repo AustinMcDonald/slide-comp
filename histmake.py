@@ -44,8 +44,46 @@ t1 = time()
 #DIR = ['Des/Copoly w Ba/+0/1', 'Des/Copoly w Ba/+0/2']
 #NAME = 'hist-Des-wba.npy'
 
+## EXPO for time 6
+#DIR = ['Exp/Poly/+6/1', 'Exp/Poly/+6/2']
+#NAME = 'hist-Exp6-poly.npy'
+#DIR = ['Exp/Glass/+6/1', 'Exp/Glass/+6/2']
+#NAME = 'hist-Exp6-glass.npy'
+#DIR = ['Exp/Copoly wo Ba/+6/1', 'Exp/Copoly wo Ba/+6/2']
+#NAME = 'hist-Exp6-woba.npy'
+#DIR = ['Exp/Copoly w Ba/+6/1', 'Exp/Copoly w Ba/+6/2']
+#NAME = 'hist-Exp6-wba.npy'
+
+## DES for time 6
+#DIR = ['Des/Poly/+6/1', 'Des/Poly/+6/2']
+#NAME = 'hist-Des6-poly.npy'
+#DIR = ['Des/Glass/+6/1', 'Des/Glass/+6/2']
+#NAME = 'hist-Des6-glass.npy'
+#DIR = ['Des/Copoly wo Ba/+6/1', 'Des/Copoly wo Ba/+6/2']
+#NAME = 'hist-Des6-woba.npy'
+#DIR = ['Des/Copoly w Ba/+6/1', 'Des/Copoly w Ba/+6/2']
+#NAME = 'hist-Des6-wba.npy'
 
 
+## EXPO for time 12
+DIR = ['Exp/Poly/+12/1', 'Exp/Poly/+12/2']
+NAME = 'hist-Exp12-poly.npy'
+#DIR = ['Exp/Glass/+12/1', 'Exp/Glass/+12/2']
+#NAME = 'hist-Exp12-glass.npy'
+#DIR = ['Exp/Copoly wo Ba/+12/1', 'Exp/Copoly wo Ba/+12/2']
+#NAME = 'hist-Exp12-woba.npy'
+#DIR = ['Exp/Copoly w Ba/+12/1', 'Exp/Copoly w Ba/+12/2']
+#NAME = 'hist-Exp12-wba.npy'
+
+## DES for time 12
+#DIR = ['Des/Poly/+12/1', 'Des/Poly/+12/2']
+#NAME = 'hist-Des12-poly.npy'
+#DIR = ['Des/Glass/+12/1', 'Des/Glass/+12/2']
+#NAME = 'hist-Des12-glass.npy'
+#DIR = ['Des/Copoly wo Ba/+12/1', 'Des/Copoly wo Ba/+12/2']
+#NAME = 'hist-Des12-woba.npy'
+#DIR = ['Des/Copoly w Ba/+12/1', 'Des/Copoly w Ba/+12/2']
+#NAME = 'hist-Des12-wba.npy'
 
 
 datamin  = 0
