@@ -85,6 +85,26 @@ NAME = 'hist-Exp12-poly.npy'
 #DIR = ['Des/Copoly w Ba/+12/1', 'Des/Copoly w Ba/+12/2']
 #NAME = 'hist-Des12-wba.npy'
 
+## EXPO for time 20
+DIR = ['Exp/Poly/+20/1', 'Exp/Poly/+20/2']
+NAME = 'hist-Exp20-poly.npy'
+#DIR = ['Exp/Glass/+20/1', 'Exp/Glass/+20/2']
+#NAME = 'hist-Exp20-glass.npy'
+#DIR = ['Exp/Copoly wo Ba/+20/1', 'Exp/Copoly wo Ba/+20/2']
+#NAME = 'hist-Exp20-woba.npy'
+#DIR = ['Exp/Copoly w Ba/+20/1', 'Exp/Copoly w Ba/+20/2']
+#NAME = 'hist-Exp20-wba.npy'
+
+## DES for time 20
+#DIR = ['Des/Poly/+20/1', 'Des/Poly/+20/2']
+#NAME = 'hist-Des20-poly.npy'
+#DIR = ['Des/Glass/+20/1', 'Des/Glass/+20/2']
+#NAME = 'hist-Des20-glass.npy'
+#DIR = ['Des/Copoly wo Ba/+20/1', 'Des/Copoly wo Ba/+20/2']
+#NAME = 'hist-Des20-woba.npy'
+#DIR = ['Des/Copoly w Ba/+20/1', 'Des/Copoly w Ba/+20/2']
+#NAME = 'hist-Des20-wba.npy'
+
 
 datamin  = 0
 datamax  = 320
